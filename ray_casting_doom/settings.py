@@ -9,13 +9,14 @@ class ScreenConfig:
     HALF_HEIGHT = HEIGHT // 2
     FPS_60 = 60
     TILE = 100
+    FPS_POSITION = WIDTH - 65, 5
 
 
 # ray casting settings
 class RayCastingConfig:
     FOV = math.pi / 3
     HALF_FOV = FOV / 2
-    NUM_RAYS = 120
+    NUM_RAYS = 300
     MAX_DEPTH = 800
     DELTA_ANGLE = FOV / NUM_RAYS
     DIST = NUM_RAYS / (2 * math.tan(HALF_FOV))
@@ -40,3 +41,4 @@ class ColorRGB:
     DARK_GRAY = (110, 110, 110)
     PURPLE = (120, 0, 120)
     DARK_GREEN = (0, 100, 0)
+    SKY_BLUE = (0, 186, 255)
