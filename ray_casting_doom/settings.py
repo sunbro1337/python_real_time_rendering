@@ -12,6 +12,14 @@ class ScreenConfig:
     FPS_POSITION = WIDTH - 65, 5
 
 
+class MinimapConfig:
+    SCALE = 5
+    TILE = ScreenConfig.TILE // SCALE
+    WIDTH = ScreenConfig.WIDTH // SCALE
+    HEIGHT = ScreenConfig.HEIGHT // SCALE
+    POSITION = (0, ScreenConfig.HEIGHT - ScreenConfig.HEIGHT // SCALE)
+
+
 # ray casting settings
 class RayCastingConfig:
     FOV = math.pi / 3
