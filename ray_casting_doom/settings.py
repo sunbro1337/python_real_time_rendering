@@ -12,6 +12,12 @@ class ScreenConfig:
     FPS_POSITION = WIDTH - 65, 5
 
 
+class TextureConfig:
+    WIDTH = 1200
+    HEIGHT = 1200
+    SCALE = WIDTH // ScreenConfig.TILE
+
+
 class MinimapConfig:
     SCALE = 5
     TILE = ScreenConfig.TILE // SCALE

@@ -1,6 +1,6 @@
 import pygame
 from settings import *
-from ray_casting import ray_cast
+from ray_casting import ray_cast_texture
 from map import world_map
 
 
@@ -9,15 +9,25 @@ class Render:
     def __init__(self, sc):
         self.sc = sc
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
+        self.textures = {
+            '1': pygame.image.load('img/1.png').convert(),
+            '2': pygame.image.load('img/2.png').convert(),
+            'sky': pygame.image.load('img/sky.png').convert(),
+        }
 
-    def draw_background(self):
+    def draw_sky(self, player_angle):
         # Drawing sky and earth
-        pygame.draw.rect(self.sc, ColorRGB.SKY_BLUE, (0, 0, ScreenConfig.WIDTH, ScreenConfig.HALF_HEIGHT))
+        sky_offset = -5 * math.degrees(player_angle) % ScreenConfig.WIDTH
+        self.sc.blit(self.textures['sky'], (sky_offset, 0))
+        self.sc.blit(self.textures['sky'], (sky_offset - ScreenConfig.WIDTH, 0))
+        self.sc.blit(self.textures['sky'], (sky_offset + ScreenConfig.WIDTH, 0))
+
+    def draw_earth(self):
         pygame.draw.rect(self.sc, ColorRGB.DARK_GREEN,
                          (0, ScreenConfig.HALF_HEIGHT, ScreenConfig.WIDTH, ScreenConfig.HALF_HEIGHT))
 
     def draw_world(self, plater_pos, player_angle):
-        ray_cast(self.sc, plater_pos, player_angle)
+        ray_cast_texture(self.sc, plater_pos, player_angle, self.textures)
 
     def show_fps(self, clock):
         display_fps = str(int(clock.get_fps()))
