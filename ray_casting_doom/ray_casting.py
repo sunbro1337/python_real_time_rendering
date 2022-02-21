@@ -39,6 +39,8 @@ def ray_cast_texture(sc, player_pos, player_angle, textures):
     for ray in range(RayCastingConfig.NUM_RAYS):
         sin_a = math.sin(current_angle)
         cos_a = math.cos(current_angle)
+        sin_a = sin_a if sin_a else 0.000001
+        cos_a = cos_a if cos_a else 0.000001
 
         # verticals
         x, dx = (xm + ScreenConfig.TILE, 1) if cos_a >= 0 else (xm, -1)

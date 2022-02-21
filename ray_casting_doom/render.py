@@ -10,20 +10,20 @@ class Render:
         self.sc = sc
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
         self.textures = {
-            '1': pygame.image.load('img/1.png').convert(),
-            '2': pygame.image.load('img/2.png').convert(),
-            'sky': pygame.image.load('img/sky.png').convert(),
+            '1': pygame.image.load('img/wall1.png').convert(),
+            '2': pygame.image.load('img/wall2.png').convert(),
+            'sky': pygame.image.load('img/sky3.png').convert(),
         }
 
     def draw_sky(self, player_angle):
         # Drawing sky and earth
-        sky_offset = -5 * math.degrees(player_angle) % ScreenConfig.WIDTH
+        sky_offset = -10 * math.degrees(player_angle) % ScreenConfig.WIDTH
         self.sc.blit(self.textures['sky'], (sky_offset, 0))
         self.sc.blit(self.textures['sky'], (sky_offset - ScreenConfig.WIDTH, 0))
         self.sc.blit(self.textures['sky'], (sky_offset + ScreenConfig.WIDTH, 0))
 
     def draw_earth(self):
-        pygame.draw.rect(self.sc, ColorRGB.DARK_GREEN,
+        pygame.draw.rect(self.sc, ColorRGB.DARK_GRAY,
                          (0, ScreenConfig.HALF_HEIGHT, ScreenConfig.WIDTH, ScreenConfig.HALF_HEIGHT))
 
     def draw_world(self, plater_pos, player_angle):
@@ -46,5 +46,5 @@ class Render:
                          2,
                          )
         for x, y in world_map:
-            pygame.draw.rect(sc_mini_map, ColorRGB.DARK_GRAY, (x // MinimapConfig.SCALE, y // MinimapConfig.SCALE, MinimapConfig.TILE, MinimapConfig.TILE), 0)
+            pygame.draw.rect(sc_mini_map, ColorRGB.DARK_BROWN, (x // MinimapConfig.SCALE, y // MinimapConfig.SCALE, MinimapConfig.TILE, MinimapConfig.TILE), 0)
         self.sc.blit(sc_mini_map, MinimapConfig.POSITION)

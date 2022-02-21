@@ -40,7 +40,7 @@ class RayCastingConfig:
 
 # player settings
 class PlayerConfig:
-    player_pos = (ScreenConfig.HALF_WIDTH, ScreenConfig.HALF_HEIGHT)
+    player_pos = (ScreenConfig.HALF_WIDTH // 4, ScreenConfig.HALF_HEIGHT - 50)
     player_angle  = 0
     player_speed = 2
 
@@ -52,7 +52,9 @@ class ColorRGB:
     RED = (220, 0, 0)
     GREEN = (0, 220, 0)
     BLUE = (0, 0, 220)
-    DARK_GRAY = (110, 110, 110)
+    DARK_GRAY = (40, 40, 40)
     PURPLE = (120, 0, 120)
     DARK_GREEN = (0, 100, 0)
     SKY_BLUE = (0, 186, 255)
+    DARK_BROWN = (97, 61, 25)
+    DARK_ORANGE = (255, 140, 0)
