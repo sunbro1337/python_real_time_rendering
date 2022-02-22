@@ -1,7 +1,8 @@
 import pygame
 from settings import *
-from ray_casting import ray_cast_texture
+from ray_casting import ray_cast_texture, ray_cast_color
 from map import world_map
+from resources_system import collect_textures
 
 
 
@@ -9,25 +10,37 @@ class Render:
     def __init__(self, sc):
         self.sc = sc
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
-        self.textures = {
-            '1': pygame.image.load('img/wall1.png').convert(),
-            '2': pygame.image.load('img/wall2.png').convert(),
-            'sky': pygame.image.load('img/sky3.png').convert(),
-        }
+        self.textures = collect_textures(TextureConfig.PATH)
 
     def draw_sky(self, player_angle):
         # Drawing sky and earth
         sky_offset = -10 * math.degrees(player_angle) % ScreenConfig.WIDTH
-        self.sc.blit(self.textures['sky'], (sky_offset, 0))
-        self.sc.blit(self.textures['sky'], (sky_offset - ScreenConfig.WIDTH, 0))
-        self.sc.blit(self.textures['sky'], (sky_offset + ScreenConfig.WIDTH, 0))
+        self.sc.blit(self.textures['sky3.png'], (sky_offset, 0))
+        self.sc.blit(self.textures['sky3.png'], (sky_offset - ScreenConfig.WIDTH, 0))
+        self.sc.blit(self.textures['sky3.png'], (sky_offset + ScreenConfig.WIDTH, 0))
 
     def draw_earth(self):
         pygame.draw.rect(self.sc, ColorRGB.DARK_GRAY,
                          (0, ScreenConfig.HALF_HEIGHT, ScreenConfig.WIDTH, ScreenConfig.HALF_HEIGHT))
 
-    def draw_world(self, plater_pos, player_angle):
-        ray_cast_texture(self.sc, plater_pos, player_angle, self.textures)
+    def draw_world(self, player_pos, player_angle, texture_is_enabled=True):
+        if texture_is_enabled:
+            ray_cast_texture(self.sc, player_pos, player_angle, self.textures)
+        else:
+            ray_cast_color(self.sc, player_pos, player_angle)
+
+    def draw_world_2d(self, player_pos, player):
+        self.sc.fill(ColorRGB.DARK_GRAY)
+        pygame.draw.circle(self.sc, ColorRGB.GREEN, player_pos, 12)
+        pygame.draw.line(self.sc, ColorRGB.GREEN, player_pos,
+                        (
+                            player.x + ScreenConfig.WIDTH * math.cos(player.angle),
+                            player.y + ScreenConfig.WIDTH * math.sin(player.angle)
+                        ),
+                        )
+        for x,y in world_map:
+           pygame.draw.rect(self.sc, ColorRGB.RED, (x, y, ScreenConfig.TILE, ScreenConfig.TILE), 0)
+
 
     def show_fps(self, clock):
         display_fps = str(int(clock.get_fps()))

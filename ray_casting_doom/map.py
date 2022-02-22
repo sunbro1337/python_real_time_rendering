@@ -18,6 +18,6 @@ for j, row in enumerate(text_map):
         if char != '.':
             mini_map.add((i * MinimapConfig.TILE, j * MinimapConfig.TILE))
             if char == '1':
-                world_map[(i * ScreenConfig.TILE, j * ScreenConfig.TILE)] = '1'
+                world_map[(i * ScreenConfig.TILE, j * ScreenConfig.TILE)] = 'wall1.png'
             elif char == '2':
-                world_map[(i * ScreenConfig.TILE, j * ScreenConfig.TILE)] = '2'
+                world_map[(i * ScreenConfig.TILE, j * ScreenConfig.TILE)] = 'wall2.png'

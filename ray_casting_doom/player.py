@@ -1,5 +1,6 @@
 import pygame
 import math
+from settings import *
 
 
 class Player:
@@ -7,6 +8,8 @@ class Player:
         self.x, self.y = player_pos
         self.angle = player_angle
         self.player_speed = player_speed
+        self.texture_is_enabled = True
+        self.world_2d_is_enabled = False
 
     @property
     def get_pos(self):
@@ -32,3 +35,19 @@ class Player:
             self.angle -= 0.02
         if keys[pygame.K_RIGHT]:
             self.angle += 0.02
+
+    def change_render_type(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_1]:
+            self.texture_is_enabled = False
+        elif keys[pygame.K_2]:
+            self.texture_is_enabled = True
+        return self.texture_is_enabled
+
+    def change_direction(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_3]:
+            self.world_2d_is_enabled = True
+        elif keys[pygame.K_4]:
+            self.world_2d_is_enabled = False
+        return self.world_2d_is_enabled

@@ -13,6 +13,7 @@ class ScreenConfig:
 
 
 class TextureConfig:
+    PATH = 'textures'
     WIDTH = 1200
     HEIGHT = 1200
     SCALE = WIDTH // ScreenConfig.TILE
@@ -36,6 +37,7 @@ class RayCastingConfig:
     DIST = NUM_RAYS / (2 * math.tan(HALF_FOV))
     PROJ_COEF = 3 * DIST * ScreenConfig.TILE
     SCALE = ScreenConfig.WIDTH / NUM_RAYS
+    colored = False
 
 
 # player settings
