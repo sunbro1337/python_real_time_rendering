@@ -14,6 +14,9 @@ def collect_textures(texture_dir):
 
 
 def collect_sprites(sprite_dir):
-    sprite_dict = {}
-    pass
-    return sprite_dict
+    sprite_types = {
+        'barrel': pygame.image.load('sprites/barrel/0.png').convert_alpha(),
+        'pedestal': pygame.image.load('sprites/pedestal/0.png').convert_alpha(),
+    }
+    return sprite_types
+

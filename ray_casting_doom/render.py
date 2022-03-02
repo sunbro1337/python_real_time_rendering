@@ -11,6 +11,7 @@ class Render:
         self.sc = sc
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
         self.textures = collect_textures(TextureConfig.PATH)
+        print(self.textures)
 
     def multiresolution_rays(self):
         pass
