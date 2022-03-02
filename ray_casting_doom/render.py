@@ -12,6 +12,15 @@ class Render:
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
         self.textures = collect_textures(TextureConfig.PATH)
 
+    def multiresolution_rays(self):
+        pass
+        # TODO
+        """
+        Сделал фитчу, которая подстраивает колличество лучей под производительность. 
+        Если движок рисует кадр за 1 \ FPS, то num_rays добавляю - и картинка становится четче.
+        Если не успевает - отнимает num_rays, и картинка становится калькуляторнее.
+        """
+
     def draw_sky(self, player_angle):
         # Drawing sky and earth
         sky_offset = -10 * math.degrees(player_angle) % ScreenConfig.WIDTH
@@ -30,6 +39,7 @@ class Render:
             ray_cast_color(self.sc, player_pos, player_angle)
 
     def draw_world_2d(self, player_pos, player):
+        # TODO Заимлементить отображение FOV 2d мире с помощью raycast функции
         self.sc.fill(ColorRGB.DARK_GRAY)
         pygame.draw.circle(self.sc, ColorRGB.GREEN, player_pos, 12)
         pygame.draw.line(self.sc, ColorRGB.GREEN, player_pos,
