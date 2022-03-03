@@ -2,7 +2,7 @@ import pygame
 from settings import *
 from ray_casting import ray_cast_texture, ray_cast_color
 from map import world_map
-from resources_system import collect_textures
+from resources_system import collect_textures, collect_sprites
 
 
 
@@ -11,7 +11,6 @@ class Render:
         self.sc = sc
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
         self.textures = collect_textures(TextureConfig.PATH)
-        print(self.textures)
 
     def multiresolution_rays(self):
         pass
@@ -33,11 +32,15 @@ class Render:
         pygame.draw.rect(self.sc, ColorRGB.DARK_GRAY,
                          (0, ScreenConfig.HALF_HEIGHT, ScreenConfig.WIDTH, ScreenConfig.HALF_HEIGHT))
 
-    def draw_world(self, player_pos, player_angle, texture_is_enabled=True):
-        if texture_is_enabled:
-            ray_cast_texture(self.sc, player_pos, player_angle, self.textures)
-        else:
-            ray_cast_color(self.sc, player_pos, player_angle)
+    def draw_world(self, world_objects):
+        # if texture_is_enabled:
+        #     pass
+        # else:
+        #     ray_cast_color(self.sc, player_pos, player_angle)
+        for obj in sorted(world_objects, key=lambda n: n[0], reverse=True):
+            if obj[0]:
+                _, obj, object_position = obj
+                self.sc.blit(obj, object_position)
 
     def draw_world_2d(self, player_pos, player):
         # TODO Заимлементить отображение FOV 2d мире с помощью raycast функции

@@ -35,6 +35,7 @@ class Player:
             self.angle -= 0.02
         if keys[pygame.K_RIGHT]:
             self.angle += 0.02
+        self.angle %= SpritesConfig.DOUBLE_PI
 
     def change_render_type(self):
         keys = pygame.key.get_pressed()

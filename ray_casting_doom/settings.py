@@ -12,13 +12,6 @@ class ScreenConfig:
     FPS_POSITION = WIDTH - 65, 5
 
 
-class TextureConfig:
-    PATH = 'textures'
-    WIDTH = 1200
-    HEIGHT = 1200
-    SCALE = WIDTH // ScreenConfig.TILE
-
-
 class MinimapConfig:
     SCALE = 5
     TILE = ScreenConfig.TILE // SCALE
@@ -38,6 +31,19 @@ class RayCastingConfig:
     PROJ_COEF = 3 * DIST * ScreenConfig.TILE
     SCALE = ScreenConfig.WIDTH / NUM_RAYS
     colored = False
+
+
+class TextureConfig:
+    PATH = 'textures'
+    WIDTH = 1200
+    HEIGHT = 1200
+    SCALE = WIDTH // ScreenConfig.TILE
+
+
+class SpritesConfig:
+    PATH = 'sprites'
+    DOUBLE_PI = 2 * math.pi
+    CENTER_RAY = RayCastingConfig.NUM_RAYS // 2 - 1
 
 
 # player settings

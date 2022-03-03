@@ -32,10 +32,11 @@ def mapping(a, b):
     return (a // ScreenConfig.TILE) * ScreenConfig.TILE, (b // ScreenConfig.TILE) * ScreenConfig.TILE
 
 
-def ray_cast_texture(sc, player_pos, player_angle, textures):
-    ox, oy = player_pos
+def ray_cast_texture(player, textures):
+    walls = []
+    ox, oy = player.get_pos
     xm, ym = mapping(ox, oy)
-    current_angle = player_angle - RayCastingConfig.HALF_FOV
+    current_angle = player.angle - RayCastingConfig.HALF_FOV
     for ray in range(RayCastingConfig.NUM_RAYS):
         sin_a = math.sin(current_angle)
         cos_a = math.cos(current_angle)
@@ -67,15 +68,18 @@ def ray_cast_texture(sc, player_pos, player_angle, textures):
         # projection
         depth, offset, texture = (depth_v, yv, texture_v) if depth_v < depth_h else (depth_h, xh, texture_h)
         offset = int(offset) % ScreenConfig.TILE
-        depth *= math.cos(player_angle - current_angle)  # fix fish eye effect
+        depth *= math.cos(player.angle - current_angle)  # fix fish eye effect
         depth = max(depth, 0.00001)
         proj_height = min(int(RayCastingConfig.PROJ_COEF / depth), 2 * ScreenConfig.HEIGHT)
 
         wall_column = textures[texture].subsurface(offset * TextureConfig.SCALE, 0, TextureConfig.SCALE, TextureConfig.HEIGHT)
         wall_column = pygame.transform.scale(wall_column, (RayCastingConfig.SCALE, proj_height))
-        sc.blit(wall_column, (ray * RayCastingConfig.SCALE, ScreenConfig.HALF_HEIGHT - proj_height // 2))
+        wall_position = (ray * RayCastingConfig.SCALE, ScreenConfig.HALF_HEIGHT - proj_height // 2)
+        walls.append((depth, wall_column, wall_position))
 
         current_angle += RayCastingConfig.DELTA_ANGLE
+
+    return walls
 
 
 def ray_cast_color(sc, player_pos, player_angle):
