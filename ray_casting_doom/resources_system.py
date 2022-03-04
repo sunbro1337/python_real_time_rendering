@@ -16,12 +16,15 @@ def collect_textures(texture_dir):
 
 def collect_sprites(sprite_dir):
     sprite_types = {}
+    sprite_list = []
     for dir in os.listdir(sprite_dir):
         path_dir = os.path.join(sprite_dir, dir)
         if os.path.isdir(path_dir):
             for file in os.listdir(path_dir):
                 path_file = os.path.join(path_dir, file)
                 if os.path.isfile(path_file):
-                    sprite_types[f"{dir}/{file}"] = pygame.image.load(path_file).convert_alpha()
+                    sprite_list.append(pygame.image.load(path_file).convert_alpha())
+        sprite_types[f"{dir}"] = sprite_list
+        sprite_list = []
     print(f"Sprites: {sprite_types}")
     return sprite_types

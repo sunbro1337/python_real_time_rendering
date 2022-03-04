@@ -44,6 +44,7 @@ class SpritesConfig:
     PATH = 'sprites'
     DOUBLE_PI = 2 * math.pi
     CENTER_RAY = RayCastingConfig.NUM_RAYS // 2 - 1
+    FAKE_RAYS = 100
 
 
 # player settings
