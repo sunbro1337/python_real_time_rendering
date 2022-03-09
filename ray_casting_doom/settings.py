@@ -7,17 +7,18 @@ class ScreenConfig:
     HEIGHT = 800
     HALF_WIDTH = WIDTH // 2
     HALF_HEIGHT = HEIGHT // 2
+    PENTA_HEIGHT = 5 * HEIGHT
     FPS_60 = 60
     TILE = 100
     FPS_POSITION = WIDTH - 65, 5
 
 
-class MinimapConfig:
-    SCALE = 5
-    TILE = ScreenConfig.TILE // SCALE
-    WIDTH = ScreenConfig.WIDTH // SCALE
-    HEIGHT = ScreenConfig.HEIGHT // SCALE
-    POSITION = (0, ScreenConfig.HEIGHT - ScreenConfig.HEIGHT // SCALE)
+class MapConfig:
+    MINIMAP_SCALE = 5
+    MINIMAP_RESOLUTION = (ScreenConfig.WIDTH // MINIMAP_SCALE, ScreenConfig.HEIGHT // MINIMAP_SCALE)
+    MAP_SCALE = 2 * MINIMAP_SCALE
+    TILE = ScreenConfig.TILE // MAP_SCALE
+    POSITION = (0, ScreenConfig.HEIGHT - ScreenConfig.HEIGHT // MINIMAP_SCALE)
 
 
 # ray casting settings

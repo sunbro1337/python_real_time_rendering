@@ -63,7 +63,7 @@ class Render:
 
     def show_minimap(self, sc_mini_map, player):
         sc_mini_map.fill(ColorRGB.BLACK)
-        map_x, map_y = player.x // MinimapConfig.SCALE, player.y // MinimapConfig.SCALE
+        map_x, map_y = player.x // MapConfig.MAP_SCALE, player.y // MapConfig.MAP_SCALE
         pygame.draw.circle(sc_mini_map, ColorRGB.GREEN, (int(map_x), int(map_y)), 5)
         pygame.draw.line(sc_mini_map, ColorRGB.GREEN, (map_x, map_y),
                          (
@@ -73,5 +73,5 @@ class Render:
                          2,
                          )
         for x, y in world_map:
-            pygame.draw.rect(sc_mini_map, ColorRGB.DARK_BROWN, (x // MinimapConfig.SCALE, y // MinimapConfig.SCALE, MinimapConfig.TILE, MinimapConfig.TILE), 0)
-        self.sc.blit(sc_mini_map, MinimapConfig.POSITION)
+            pygame.draw.rect(sc_mini_map, ColorRGB.DARK_BROWN, (x // MapConfig.MAP_SCALE, y // MapConfig.MAP_SCALE, MapConfig.TILE, MapConfig.TILE), 0)
+        self.sc.blit(sc_mini_map, MapConfig.POSITION)

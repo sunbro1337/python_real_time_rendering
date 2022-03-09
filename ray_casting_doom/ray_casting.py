@@ -3,7 +3,7 @@ import math
 import pygame
 
 from settings import *
-from map import world_map
+from map import world_map, WORLD_HEIGHT, WORLD_WIDTH
 
 # Old low performance but simple
 # def ray_cast(sc, player_pos, player_angle):
@@ -33,8 +33,16 @@ def mapping(a, b):
 
 
 def ray_cast_texture(player, textures):
+    # TODO
+    #  Traceback (most recent call last):
+    #   File "D:/CodeProjects/python_real_time_rendering/ray_casting_doom/main.py", line 31, in <module>
+    #     walls = ray_cast_texture(player, render.textures)
+    #   File "D:\CodeProjects\python_real_time_rendering\ray_casting_doom\ray_casting.py", line 76, in ray_cast_texture
+    #     wall_column = textures[texture].subsurface(offset * TextureConfig.SCALE, 0, TextureConfig.SCALE, TextureConfig.HEIGHT)
+    #  KeyError: 1
     walls = []
     ox, oy = player.get_pos
+    texture_h, texture_v = 1, 1
     xm, ym = mapping(ox, oy)
     current_angle = player.angle - RayCastingConfig.HALF_FOV
     for ray in range(RayCastingConfig.NUM_RAYS):
@@ -45,7 +53,7 @@ def ray_cast_texture(player, textures):
 
         # verticals
         x, dx = (xm + ScreenConfig.TILE, 1) if cos_a >= 0 else (xm, -1)
-        for i in range(0, ScreenConfig.WIDTH, ScreenConfig.TILE):
+        for i in range(0, WORLD_WIDTH, ScreenConfig.TILE):
             depth_v = (x - ox) / cos_a
             yv = oy + depth_v * sin_a
             tile_v = mapping(x + dx, yv)
@@ -56,7 +64,7 @@ def ray_cast_texture(player, textures):
 
         # horizontals
         y, dy = (ym + ScreenConfig.TILE, 1) if sin_a >= 0 else (ym, -1)
-        for i in range(0, ScreenConfig.HEIGHT, ScreenConfig.TILE):
+        for i in range(0, WORLD_HEIGHT, ScreenConfig.TILE):
             depth_h = (y - oy) / sin_a
             xh = ox + depth_h * cos_a
             tile_h = mapping(xh, y + dy)
@@ -70,7 +78,7 @@ def ray_cast_texture(player, textures):
         offset = int(offset) % ScreenConfig.TILE
         depth *= math.cos(player.angle - current_angle)  # fix fish eye effect
         depth = max(depth, 0.00001)
-        proj_height = min(int(RayCastingConfig.PROJ_COEF / depth), 2 * ScreenConfig.HEIGHT)
+        proj_height = min(int(RayCastingConfig.PROJ_COEF / depth), ScreenConfig.PENTA_HEIGHT)
 
         wall_column = textures[texture].subsurface(offset * TextureConfig.SCALE, 0, TextureConfig.SCALE, TextureConfig.HEIGHT)
         wall_column = pygame.transform.scale(wall_column, (RayCastingConfig.SCALE, proj_height))
