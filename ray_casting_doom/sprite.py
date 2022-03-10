@@ -7,6 +7,7 @@ from collections import deque
 class Sprites:
     def __init__(self):
         # self.sprite_types = collect_sprites(SpritesConfig.PATH)
+        # TODO Fix libpng warning: grAb: CRC error
         self.sprite_parameters = {
             'barrel': {
                 'sprite': pygame.image.load('sprites/barrel/base/0.png'),
