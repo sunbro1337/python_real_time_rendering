@@ -42,7 +42,7 @@ def ray_cast_texture(player, textures):
     #  KeyError: 1
     walls = []
     ox, oy = player.get_pos
-    texture_h, texture_v = 1, 1
+    texture_h, texture_v = 'wall1.png', 'wall1.png'
     xm, ym = mapping(ox, oy)
     current_angle = player.angle - RayCastingConfig.HALF_FOV
     for ray in range(RayCastingConfig.NUM_RAYS):

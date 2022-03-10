@@ -37,6 +37,14 @@ class Player:
             self.angle += 0.02
         self.angle %= SpritesConfig.DOUBLE_PI
 
+    def mouse_control(self):
+        # TODO Mouse control for camera and shots
+        pass
+
+    def gamepad_control(self):
+        # TODO Gamepad control for camera, movements, shots etc.
+        pass
+
     def change_render_type(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_1]:

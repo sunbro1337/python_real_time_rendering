@@ -1,5 +1,6 @@
 import pygame
 
+import map
 from settings import *
 from player import Player
 from render import Render
@@ -15,6 +16,7 @@ clock = pygame.time.Clock()
 player = Player(PlayerConfig.player_pos, PlayerConfig.player_angle, PlayerConfig.player_speed)
 render = Render(sc)
 
+print(map.world_map)
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

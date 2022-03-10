@@ -28,10 +28,10 @@ class SpriteObject:
             self.sprite_angles = [frozenset(range(i, i +45)) for i in range(0, 360, 45)]
             self.sprite_positions = {angle: pos for angle, pos in zip(self.sprite_angles, self.object)}
 
-    def object_locate(self, player, walls):
-        fake_walls0 = [walls[0] for i in range(SpritesConfig.FAKE_RAYS)]
-        fake_walls1 = [walls[-1] for i in range(SpritesConfig.FAKE_RAYS)]
-        fake_walls = fake_walls0 + walls + fake_walls1
+    def object_locate(self, player, walls=None):
+        # fake_walls0 = [walls[0] for i in range(SpritesConfig.FAKE_RAYS)]
+        # fake_walls1 = [walls[-1] for i in range(SpritesConfig.FAKE_RAYS)]
+        # fake_walls = fake_walls0 + walls + fake_walls1
 
         dx, dy = self.x - player.x, self.y - player.y
         distance_to_sprite = math.sqrt(dx ** 2 + dy ** 2)
@@ -46,10 +46,10 @@ class SpriteObject:
         distance_to_sprite *= math.cos(RayCastingConfig.HALF_FOV - current_ray * RayCastingConfig.DELTA_ANGLE)
 
         fake_ray = current_ray + SpritesConfig.FAKE_RAYS
-        if 0 <= fake_ray <= RayCastingConfig.NUM_RAYS - 1 + 2 * SpritesConfig.FAKE_RAYS and \
-                distance_to_sprite < fake_walls[fake_ray][0]:
+        if 0 <= fake_ray <= SpritesConfig.FAKE_RAYS_RANGE and distance_to_sprite > 30:
+            # for fake walls use < fake_walls[fake_ray][0]; instead > 30
             # pygame.error: Out of memory proj_height = int(RayCastingConfig.PROJ_COEF / distance_to_sprite * self.scale)
-            proj_height = min(int(RayCastingConfig.PROJ_COEF / distance_to_sprite * self.scale), 2 * ScreenConfig.HEIGHT)
+            proj_height = min(int(RayCastingConfig.PROJ_COEF / distance_to_sprite * self.scale), ScreenConfig.DOUBLE_HEIGHT)
             half_proj_height = proj_height // 2
             shift = half_proj_height * self.shift
 
