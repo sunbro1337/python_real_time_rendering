@@ -13,7 +13,7 @@ sc = pygame.display.set_mode((ScreenConfig.WIDTH, ScreenConfig.HEIGHT))
 sc_mini_map = pygame.Surface(MapConfig.MINIMAP_RESOLUTION)
 sprites = Sprites()
 clock = pygame.time.Clock()
-player = Player(PlayerConfig.player_pos, PlayerConfig.player_angle, PlayerConfig.player_speed)
+player = Player(PlayerConfig.player_pos, PlayerConfig.player_angle, PlayerConfig.player_speed, sprites)
 render = Render(sc)
 
 print(map.world_map)

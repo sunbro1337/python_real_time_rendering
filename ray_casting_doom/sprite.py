@@ -19,6 +19,7 @@ class Sprites:
                 ),
                 'animation_dist': 800,
                 'animation_speed': 10,
+                'blocked': True,
             },
             'pin': {
                 'sprite': pygame.image.load('sprites/pin/base/0.png').convert_alpha(),
@@ -50,7 +51,7 @@ class Sprites:
                     [pygame.image.load(f'sprites/flame/anim/{i}.png').convert_alpha() for i in range(16)]),
                 'animation_dist': 800,
                 'animation_speed': 5,
-                'blocked': None,
+                'blocked': False,
             },
         }
         self.list_of_objects = [
@@ -65,6 +66,10 @@ class Sprites:
             #SpriteObject(self.sprite_types['kakodemon'], False, (5, 4), -0.2, 0.7),
         ]
 
+    @property
+    def collision_sprites(self):
+        return [pygame.Rect(*obj.pos, obj.rect_side, obj.rect_side) for obj in self.list_of_objects if obj.blocked]
+
 
 class SpriteObject:
     def __init__(self, parameters, pos):
@@ -75,8 +80,11 @@ class SpriteObject:
         self.animation = parameters['animation']
         self.animation_dist = parameters['animation_dist']
         self.animation_speed = parameters['animation_speed']
+        self.blocked = parameters['blocked']
+        self.rect_side = 30
         self.animation_count = 0
-        self.pos = self.x, self.y = pos[0] * ScreenConfig.TILE, pos[1] * ScreenConfig.TILE
+        self.x, self.y = pos[0] * ScreenConfig.TILE, pos[1] * ScreenConfig.TILE
+        self.pos = self.x - self.rect_side // 2, self.y - self.rect_side // 2
 
         if self.viewing_angles:
             self.sprite_angles = [frozenset(range(i, i + 45)) for i in range(0, 360, 45)]
