@@ -11,6 +11,7 @@ https://www.youtube.com/watch?v=Ym-7UEPICto - To be done
 
 ### Tech
 
+- Raycasting functions on GPU
 - Mouse controls
 - Gamepad controls(xinput, directinput)
 - Sprites in AR
