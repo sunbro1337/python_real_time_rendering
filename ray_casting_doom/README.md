@@ -5,3 +5,17 @@ https://www.youtube.com/watch?v=MgTHkqMjVa4 - Done
 https://www.youtube.com/watch?v=5Yl3UJXzhwM - Done
 https://www.youtube.com/watch?v=rRqcyFAFqpQ - In progress
 https://www.youtube.com/watch?v=Ym-7UEPICto - To be done
+
+
+## Improves:
+
+### Tech
+
+- Mouse controls
+- Gamepad controls(xinput, directinput)
+- Sprites in AR
+
+### Gameplay
+
+- Double game setting reference from warhammer age of sigmar(fantasy), 40000(sci-fy)
+- Controls improvements
