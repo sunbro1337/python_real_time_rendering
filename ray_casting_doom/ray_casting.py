@@ -1,6 +1,6 @@
 import math
-
 import pygame
+from numba import njit
 
 from settings import *
 from map import world_map, WORLD_HEIGHT, WORLD_WIDTH
@@ -28,11 +28,13 @@ from map import world_map, WORLD_HEIGHT, WORLD_WIDTH
 #         current_angle += RayCastingConfig.DELTA_ANGLE
 
 
+@njit(fastmath=True)
 def mapping(a, b):
     return (a // ScreenConfig.TILE) * ScreenConfig.TILE, (b // ScreenConfig.TILE) * ScreenConfig.TILE
 
 
-def ray_cast_texture(player, textures):
+@njit(fastmath=True)
+def ray_cast_walls(player_pos, player_angle, world_map):
     # TODO
     #  Traceback (most recent call last):
     #   File "D:/CodeProjects/python_real_time_rendering/ray_casting_doom/main.py", line 31, in <module>
@@ -40,11 +42,11 @@ def ray_cast_texture(player, textures):
     #   File "D:\CodeProjects\python_real_time_rendering\ray_casting_doom\ray_casting.py", line 76, in ray_cast_texture
     #     wall_column = textures[texture].subsurface(offset * TextureConfig.SCALE, 0, TextureConfig.SCALE, TextureConfig.HEIGHT)
     #  KeyError: 1
-    walls = []
-    ox, oy = player.get_pos
-    texture_h, texture_v = 'wall1.png', 'wall1.png'
+    casted_walls = []
+    ox, oy = player_pos
+    texture_h, texture_v = 1, 2
     xm, ym = mapping(ox, oy)
-    current_angle = player.angle - RayCastingConfig.HALF_FOV
+    current_angle = player_angle - RayCastingConfig.HALF_FOV
     for ray in range(RayCastingConfig.NUM_RAYS):
         sin_a = math.sin(current_angle)
         cos_a = math.cos(current_angle)
@@ -76,20 +78,28 @@ def ray_cast_texture(player, textures):
         # projection
         depth, offset, texture = (depth_v, yv, texture_v) if depth_v < depth_h else (depth_h, xh, texture_h)
         offset = int(offset) % ScreenConfig.TILE
-        depth *= math.cos(player.angle - current_angle)  # fix fish eye effect
+        depth *= math.cos(player_angle - current_angle)  # fix fish eye effect
         depth = max(depth, 0.00001)
         proj_height = min(int(RayCastingConfig.PROJ_COEF / depth), ScreenConfig.PENTA_HEIGHT)
+        casted_walls.append((depth, offset, proj_height, texture))
+        current_angle += RayCastingConfig.DELTA_ANGLE
 
-        wall_column = textures[texture].subsurface(offset * TextureConfig.SCALE, 0, TextureConfig.SCALE, TextureConfig.HEIGHT)
+    return casted_walls
+
+
+def create_walls(player, textures):
+    casted_walls = ray_cast_walls(player.get_pos, player.angle, world_map)
+    walls = []
+    for ray, casted_values in enumerate(casted_walls):
+        depth, offset, proj_height, texture = casted_values
+        wall_column = textures[texture].subsurface(offset * TextureConfig.SCALE, 0, TextureConfig.SCALE,                                               TextureConfig.HEIGHT)
         wall_column = pygame.transform.scale(wall_column, (RayCastingConfig.SCALE, proj_height))
         wall_position = (ray * RayCastingConfig.SCALE, ScreenConfig.HALF_HEIGHT - proj_height // 2)
         walls.append((depth, wall_column, wall_position))
-
-        current_angle += RayCastingConfig.DELTA_ANGLE
-
     return walls
 
 
+# deprecated
 def ray_cast_color(sc, player_pos, player_angle):
     ox, oy = player_pos
     xm, ym = mapping(ox, oy)

@@ -1,6 +1,5 @@
 import pygame
 from settings import *
-from ray_casting import ray_cast_texture, ray_cast_color
 from map import world_map
 from resources_system import collect_textures, collect_sprites
 
@@ -11,6 +10,7 @@ class Render:
         self.sc = sc
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
         self.textures = collect_textures(TextureConfig.PATH)
+        self.textures_for_cast = list(self.textures)
 
     def multiresolution_rays(self):
         pass
