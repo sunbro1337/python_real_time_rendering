@@ -12,9 +12,10 @@ class Render:
         self.textures = collect_textures(TextureConfig.PATH)
         # TODO Fefactor resource system
         # self.textures_for_cast = list(self.textures.values())
-        self.textures_for_raycast = {1: pygame.image.load('textures/wall1.png').convert(),
-                                  2: pygame.image.load('textures/wall2.png').convert(),
-                                  }
+        self.textures_for_raycast = {
+            1: pygame.image.load('textures/wall1.png').convert(),
+            2: pygame.image.load('textures/wall2.png').convert(),
+        }
 
     def multiresolution_rays(self):
         pass

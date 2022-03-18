@@ -66,9 +66,8 @@ def ray_cast_walls(player_pos, player_angle, world_map):
     return casted_walls
 
 
-def create_walls(player, textures):
+def texture_walls(player, textures):
     casted_walls = ray_cast_walls(player.get_pos, player.angle, world_map)
-    print(textures)
     walls = []
     for ray, casted_values in enumerate(casted_walls):
         depth, offset, proj_height, texture = casted_values

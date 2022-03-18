@@ -11,11 +11,14 @@
 
 ### Tech
 
-- Raycasting functions on GPU
+- Raycasting functions on GPU (Nvidia CUDA, AMD ROCm)
 - Mouse controls
 - Gamepad controls(xinput, directinput)
 - Sprites in AR
 - Refactor resource system
+- Fix numba warnings in python.log
+- Log system
+- Handle exception system 
 
 ### Gameplay
 
