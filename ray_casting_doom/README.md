@@ -3,7 +3,7 @@
 - https://www.youtube.com/watch?v=UUw1KrbYe78 - Done
 - https://www.youtube.com/watch?v=MgTHkqMjVa4 - Done
 - https://www.youtube.com/watch?v=5Yl3UJXzhwM - Done
-- https://www.youtube.com/watch?v=rRqcyFAFqpQ - In progress
+- https://www.youtube.com/watch?v=rRqcyFAFqpQ - Done
 - https://www.youtube.com/watch?v=Ym-7UEPICto - To be done
 
 
@@ -15,6 +15,7 @@
 - Mouse controls
 - Gamepad controls(xinput, directinput)
 - Sprites in AR
+- Refactor resource system
 
 ### Gameplay
 

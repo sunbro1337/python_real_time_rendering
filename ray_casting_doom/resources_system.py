@@ -3,7 +3,7 @@ import pygame
 
 from settings import *
 
-
+# TODO REFACTOR
 def collect_textures(texture_dir):
     textures_dict = {}
     for file in os.listdir(texture_dir):
