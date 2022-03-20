@@ -8,7 +8,7 @@ from settings import *
 _ = False
 matrix_map = [
     [1, _, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 1],
+    [1, _, _, _, _, _, 2, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 1],
     [1, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 1],
     [1, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 1],
     [1, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, 1],
@@ -36,6 +36,6 @@ for j, row in enumerate(matrix_map):
             mini_map.add((i * MapConfig.TILE, j * MapConfig.TILE))
             collision_walls.append(pygame.Rect(i * ScreenConfig.TILE, j * ScreenConfig.TILE, ScreenConfig.TILE, ScreenConfig.TILE))
             if char == 1:
-                world_map[(i * ScreenConfig.TILE, j * ScreenConfig.TILE)] = char
+                world_map[(i * ScreenConfig.TILE, j * ScreenConfig.TILE)] = 852
             elif char == 2:
-                world_map[(i * ScreenConfig.TILE, j * ScreenConfig.TILE)] = char
+                world_map[(i * ScreenConfig.TILE, j * ScreenConfig.TILE)] = 853

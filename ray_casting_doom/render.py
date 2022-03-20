@@ -10,12 +10,6 @@ class Render:
         self.sc = sc
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
         self.textures = collect_textures(TextureConfig.PATH)
-        # TODO Fefactor resource system
-        # self.textures_for_cast = list(self.textures.values())
-        self.textures_for_raycast = {
-            1: pygame.image.load('textures/wall1.png').convert(),
-            2: pygame.image.load('textures/wall2.png').convert(),
-        }
 
     def multiresolution_rays(self):
         pass
@@ -29,9 +23,9 @@ class Render:
     def draw_sky(self, player_angle):
         # Drawing sky and earth
         sky_offset = -10 * math.degrees(player_angle) % ScreenConfig.WIDTH
-        self.sc.blit(self.textures['sky3.png'], (sky_offset, 0))
-        self.sc.blit(self.textures['sky3.png'], (sky_offset - ScreenConfig.WIDTH, 0))
-        self.sc.blit(self.textures['sky3.png'], (sky_offset + ScreenConfig.WIDTH, 0))
+        self.sc.blit(self.textures[765], (sky_offset, 0))
+        self.sc.blit(self.textures[765], (sky_offset - ScreenConfig.WIDTH, 0))
+        self.sc.blit(self.textures[765], (sky_offset + ScreenConfig.WIDTH, 0))
 
     def draw_earth(self):
         pygame.draw.rect(self.sc, ColorRGB.DARK_GRAY,

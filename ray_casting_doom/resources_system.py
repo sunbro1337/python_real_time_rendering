@@ -3,28 +3,25 @@ import pygame
 
 from settings import *
 
-# TODO REFACTOR
-def collect_textures(texture_dir):
+
+def convert_str_to_int(str: str) -> int:
+    result = 0
+    for char in str:
+        result += int(hex(ord(char))[2:], base=16)
+    return result
+
+
+def collect_textures(texture_dir: str) -> dict:
     textures_dict = {}
     for file in os.listdir(texture_dir):
         path = os.path.join(texture_dir, file)
         if os.path.isfile(path):
-            textures_dict[f'{file}'] = pygame.image.load(path).convert()
+            key = convert_str_to_int(file)
+            textures_dict[key] = pygame.image.load(path).convert()
+            print(f"Find texture: file={file}, key={key}, value={textures_dict[key]}")
     print(f"Textures: {textures_dict}")
     return textures_dict
 
 
-def collect_sprites(sprite_dir):
-    sprite_types = {}
-    sprite_list = []
-    for dir in os.listdir(sprite_dir):
-        path_dir = os.path.join(sprite_dir, dir)
-        if os.path.isdir(path_dir):
-            for file in os.listdir(path_dir):
-                path_file = os.path.join(path_dir, file)
-                if os.path.isfile(path_file):
-                    sprite_list.append(pygame.image.load(path_file).convert_alpha())
-        sprite_types[f"{dir}"] = sprite_list
-        sprite_list = []
-    print(f"Sprites: {sprite_types}")
-    return sprite_types
+def collect_sprites(sprite_dir: str) -> dict:
+    pass

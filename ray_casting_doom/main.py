@@ -30,7 +30,7 @@ while True:
 
     render.draw_sky(PlayerConfig.player_angle)
     render.draw_earth()
-    walls = texture_walls(player, render.textures_for_raycast)
+    walls = texture_walls(player, render.textures)
     render.draw_world(walls + [obj.object_locate(player, walls) for obj in sprites.list_of_objects])
     render.show_fps(clock)
     render.show_minimap(sc_mini_map, player)

@@ -23,7 +23,7 @@ def ray_cast_walls(player_pos, player_angle, world_map):
     #  KeyError: 1
     casted_walls = []
     ox, oy = player_pos
-    texture_h, texture_v = 1, 2
+    texture_h, texture_v = 852, 853
     xm, ym = mapping(ox, oy)
     current_angle = player_angle - njit_settings.HALF_FOV
     for ray in range(njit_settings.NUM_RAYS):
