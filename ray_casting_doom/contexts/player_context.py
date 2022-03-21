@@ -1,5 +1,7 @@
 import pygame
-from configs.global_settings import *
+import math
+
+from configs.global_settings import SpritesConfig
 
 
 class Player:

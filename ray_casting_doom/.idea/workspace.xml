@@ -1,92 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ccdfd100-b6db-4007-bc70-2f4d67cf46d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/contexts/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ray_casting_doom.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/spaces/default_map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/maps_context.py" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/maps_context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/player_context.py" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/player_context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contexts/render_context.py" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/render_context.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/maps_context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/njit_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/configs/njit_settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ray_casting.py" beforeDir="false" afterPath="$PROJECT_DIR$/systems/ray_casting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/contexts/render_context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources_system.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/configs/global_settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/anim/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/barrel/base/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/anim/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/flame/base/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/anim/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/base/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/base/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/base/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/base/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/base/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/base/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/base/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/kakodemon/base/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pedestal/base/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/anim/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/anim/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/anim/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/anim/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/anim/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/anim/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/anim/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/anim/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/pin/base/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/sky.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/sky3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/wall1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/wall2.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -143,5 +79,16 @@
       <updated>1647859340939</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
