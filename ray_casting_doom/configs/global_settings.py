@@ -36,14 +36,14 @@ class RayCastingConfig:
 
 
 class TextureConfig:
-    PATH = 'textures'
+    PATH = 'res/textures'
     WIDTH = 1200
     HEIGHT = 1200
     SCALE = WIDTH // ScreenConfig.TILE
 
 
 class SpritesConfig:
-    PATH = 'sprites'
+    PATH = 'res/sprites'
     DOUBLE_PI = 2 * math.pi
     CENTER_RAY = RayCastingConfig.NUM_RAYS // 2 - 1
     FAKE_RAYS = 100

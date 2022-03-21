@@ -1,4 +1,4 @@
-from settings import *
+from configs.global_settings import *
 
 
 # for njit needed to define local var for configs from settings without class

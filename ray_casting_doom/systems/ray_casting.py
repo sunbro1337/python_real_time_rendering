@@ -1,10 +1,8 @@
-import math
 import pygame
 from numba import njit
 
-from settings import *
-import njit_settings
-from map import world_map, WORLD_HEIGHT, WORLD_WIDTH
+from configs.global_settings import *
+from configs import njit_settings
 
 
 @njit(fastmath=True)
@@ -13,7 +11,7 @@ def mapping(a, b):
 
 
 @njit(fastmath=True)
-def ray_cast_walls(player_pos, player_angle, world_map):
+def ray_cast_walls(player_pos, player_angle, world_map, world_width, world_height):
     # TODO
     #  Traceback (most recent call last):
     #   File "D:/CodeProjects/python_real_time_rendering/ray_casting_doom/main.py", line 31, in <module>
@@ -34,7 +32,7 @@ def ray_cast_walls(player_pos, player_angle, world_map):
 
         # verticals
         x, dx = (xm + njit_settings.TILE, 1) if cos_a >= 0 else (xm, -1)
-        for i in range(0, WORLD_WIDTH, njit_settings.TILE):
+        for i in range(0, world_width, njit_settings.TILE):
             depth_v = (x - ox) / cos_a
             yv = oy + depth_v * sin_a
             tile_v = mapping(x + dx, yv)
@@ -45,7 +43,7 @@ def ray_cast_walls(player_pos, player_angle, world_map):
 
         # horizontals
         y, dy = (ym + njit_settings.TILE, 1) if sin_a >= 0 else (ym, -1)
-        for i in range(0, WORLD_HEIGHT, njit_settings.TILE):
+        for i in range(0, world_height, njit_settings.TILE):
             depth_h = (y - oy) / sin_a
             xh = ox + depth_h * cos_a
             tile_h = mapping(xh, y + dy)
@@ -66,8 +64,8 @@ def ray_cast_walls(player_pos, player_angle, world_map):
     return casted_walls
 
 
-def texture_walls(player, textures):
-    casted_walls = ray_cast_walls(player.get_pos, player.angle, world_map)
+def texture_walls(player, textures, world_map, world_width, world_height):
+    casted_walls = ray_cast_walls(player.get_pos, player.angle, world_map, world_width, world_height)
     walls = []
     for ray, casted_values in enumerate(casted_walls):
         depth, offset, proj_height, texture = casted_values
@@ -79,7 +77,7 @@ def texture_walls(player, textures):
 
 
 # deprecated
-def ray_cast_color(sc, player_pos, player_angle):
+def ray_cast_color(sc, player_pos, player_angle, world_map):
     ox, oy = player_pos
     xm, ym = mapping(ox, oy)
     current_angle = player_angle - RayCastingConfig.HALF_FOV
