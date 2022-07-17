@@ -19,8 +19,9 @@
 - Fix numba warnings in python.log
 - Log system
 - Handle exception system 
+- Move to Unity or Godot
 
 ### Gameplay
 
-- Double game setting reference from warhammer age of sigmar(fantasy), 40000(sci-fy)
+- A double game setting based on the example of warhammer age of sigmar(fantasy), 40000(sci-fy)
 - Controls improvements
